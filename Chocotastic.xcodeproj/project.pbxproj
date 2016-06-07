@@ -7,24 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BC05E871D066753001CC382 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E861D066753001CC382 /* ShoppingCart.swift */; };
+		9BC05E891D066C71001CC382 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E881D066C71001CC382 /* CartViewController.swift */; };
 		9BE373171D0511EE0024946D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE373161D0511EE0024946D /* AppDelegate.swift */; };
-		9BE373191D0511EE0024946D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE373181D0511EE0024946D /* ViewController.swift */; };
+		9BE373191D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE373181D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift */; };
 		9BE3731C1D0511EE0024946D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE3731A1D0511EE0024946D /* Main.storyboard */; };
 		9BE3731E1D0511EE0024946D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE3731D1D0511EE0024946D /* Assets.xcassets */; };
 		9BE373211D0511EE0024946D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE3731F1D0511EE0024946D /* LaunchScreen.storyboard */; };
+		9BE3732B1D0514790024946D /* Chocolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE3732A1D0514790024946D /* Chocolate.swift */; };
+		9BE3732D1D05164A0024946D /* ChocolateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE3732C1D05164A0024946D /* ChocolateCell.swift */; };
 		B0825D259BF50D0637A67952 /* Pods_Chocotastic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A20AB293DCC9F450AC8990D /* Pods_Chocotastic.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		24C6A4382DED490646C5C146 /* Pods-Chocotastic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chocotastic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chocotastic/Pods-Chocotastic.debug.xcconfig"; sourceTree = "<group>"; };
 		2A20AB293DCC9F450AC8990D /* Pods_Chocotastic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chocotastic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BC05E861D066753001CC382 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
+		9BC05E881D066C71001CC382 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		9BE373131D0511EE0024946D /* Chocotastic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chocotastic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE373161D0511EE0024946D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9BE373181D0511EE0024946D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9BE373181D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChocolatesOfTheWorldViewController.swift; sourceTree = "<group>"; };
 		9BE3731B1D0511EE0024946D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BE3731D1D0511EE0024946D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BE373201D0511EE0024946D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BE373221D0511EE0024946D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9BE3732A1D0514790024946D /* Chocolate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chocolate.swift; sourceTree = "<group>"; };
+		9BE3732C1D05164A0024946D /* ChocolateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChocolateCell.swift; sourceTree = "<group>"; };
 		F966C088EDA1C2D22263FC81 /* Pods-Chocotastic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chocotastic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Chocotastic/Pods-Chocotastic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -71,13 +79,33 @@
 			isa = PBXGroup;
 			children = (
 				9BE373161D0511EE0024946D /* AppDelegate.swift */,
-				9BE373181D0511EE0024946D /* ViewController.swift */,
+				9BC05E881D066C71001CC382 /* CartViewController.swift */,
+				9BE373181D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift */,
 				9BE3731A1D0511EE0024946D /* Main.storyboard */,
+				9BE373281D05145A0024946D /* Models */,
+				9BE373291D05145A0024946D /* Views */,
 				9BE3731D1D0511EE0024946D /* Assets.xcassets */,
 				9BE3731F1D0511EE0024946D /* LaunchScreen.storyboard */,
 				9BE373221D0511EE0024946D /* Info.plist */,
 			);
 			path = Chocotastic;
+			sourceTree = "<group>";
+		};
+		9BE373281D05145A0024946D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9BE3732A1D0514790024946D /* Chocolate.swift */,
+				9BC05E861D066753001CC382 /* ShoppingCart.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9BE373291D05145A0024946D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9BE3732C1D05164A0024946D /* ChocolateCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		CC571C24853B12912310CB0F /* Frameworks */ = {
@@ -210,8 +238,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BE373191D0511EE0024946D /* ViewController.swift in Sources */,
+				9BC05E871D066753001CC382 /* ShoppingCart.swift in Sources */,
+				9BE3732D1D05164A0024946D /* ChocolateCell.swift in Sources */,
+				9BE373191D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift in Sources */,
 				9BE373171D0511EE0024946D /* AppDelegate.swift in Sources */,
+				9BC05E891D066C71001CC382 /* CartViewController.swift in Sources */,
+				9BE3732B1D0514790024946D /* Chocolate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
