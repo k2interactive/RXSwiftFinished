@@ -11,6 +11,8 @@ import RxSwift
 
 struct ShoppingCart {
     
+    static let sharedCart = ShoppingCart()
+    
     //Create the array of chocolates as an Rx Variable so it can be observed.
     let chocolates: Variable<[Chocolate]> = Variable([])
     

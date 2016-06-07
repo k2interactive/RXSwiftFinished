@@ -9,12 +9,6 @@
 import UIKit
 
 class CartViewController: UIViewController {
-
-    var cart: ShoppingCart! {
-        didSet {
-            configureFromCart()
-        }
-    }
     
     @IBOutlet private var checkoutButton: UIButton!
     @IBOutlet private var totalItemsLabel: UILabel!
@@ -34,15 +28,12 @@ class CartViewController: UIViewController {
     }
     
     private func configureFromCart() {
-        guard let cart = cart else {
-            //Cart has not been set on this instance yet. Bail!
-            return
-        }
-        
         guard checkoutButton != nil else {
             //UI has not been instantiated yet. Bail!
             return
         }
+        
+        let cart = ShoppingCart.sharedCart
         
         let flags = cart.chocolates.value.reduce("") {
             currentString, chocolate in
@@ -64,6 +55,7 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func reset() {
-        dismissViewControllerAnimated(true, completion: nil)
+        ShoppingCart.sharedCart.chocolates.value = []
+        navigationController?.popViewControllerAnimated(true)
     }
 }

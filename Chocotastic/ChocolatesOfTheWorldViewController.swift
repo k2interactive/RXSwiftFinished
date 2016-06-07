@@ -8,12 +8,13 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class ChocolatesOfTheWorldViewController: UIViewController {
     
     @IBOutlet private var cartButton: UIBarButtonItem!
-    let chocolates = Chocolate.ofEurope
-    let cart = ShoppingCart()
+    @IBOutlet private var tableView: UITableView!
+    let chocolates = Observable.just(Chocolate.ofEurope)
     let disposeBag = DisposeBag()
     
     //MARK: View Lifecycle
@@ -22,6 +23,8 @@ class ChocolatesOfTheWorldViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Chocolate!!!"
         
+        setupCellConfiguration()
+        setupCellTapHandling()
         setupCartObserver()
     }
     
@@ -30,28 +33,39 @@ class ChocolatesOfTheWorldViewController: UIViewController {
         return .LightContent
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let identifier = identifierForSegue(segue)
-        
-        switch identifier {
-        case .GoToCart:
-            guard let cartVC = segue.destinationViewController as? CartViewController else {
-                assertionFailure("Couldn't get cart VC!")
-                return
-            }
-            
-            cartVC.cart = cart 
-        }
-    }
-    
     //MARK: Rx Setup
     
+    private func setupCellConfiguration() {
+        //Equivalent of cell for row at index path
+        chocolates.bindTo(tableView.rx_itemsWithCellIdentifier(ChocolateCell.Identifier, cellType: ChocolateCell.self)) {
+                row, chocolate, cell in
+                cell.configureWithChocolate(chocolate)
+            }
+            .addDisposableTo(disposeBag)
+    }
+    
+    private func setupCellTapHandling() {
+        //Equivalent of did select row at index path
+        tableView
+            .rx_modelSelected(Chocolate)
+            .subscribeNext {
+                chocolate in
+                ShoppingCart.sharedCart.chocolates.value.append(chocolate)
+                
+                if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
+                    self.tableView.deselectRowAtIndexPath(selectedRowIndexPath, animated: true)
+                }
+            }
+            .addDisposableTo(disposeBag)
+    }
+    
     private func setupCartObserver() {
-        cart.chocolates.asObservable()
+        ShoppingCart.sharedCart.chocolates.asObservable()
             .subscribeNext {
                 chocolates in
                 self.cartButton.title = "\(chocolates.count) 🍫"
-        }.addDisposableTo(disposeBag)
+            }
+            .addDisposableTo(disposeBag)
     }
 
 }
@@ -63,36 +77,3 @@ extension ChocolatesOfTheWorldViewController: SegueHandler {
         GoToCart
     }
 }
-
-extension ChocolatesOfTheWorldViewController: UITableViewDataSource {
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return chocolates.count
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        guard let cell = tableView.dequeueReusableCellWithIdentifier(ChocolateCell.Identifier, forIndexPath: indexPath) as?  ChocolateCell else {
-            assertionFailure("Couldn't get the proper cell type!")
-            return UITableViewCell()
-        }
-        
-        let chocolate = chocolates[indexPath.row]
-        cell.configureWithChocolate(chocolate)
-        
-        return cell
-    }
-}
-
-extension ChocolatesOfTheWorldViewController: UITableViewDelegate {
-
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        let chocolate = chocolates[indexPath.row]
-        cart.chocolates.value.append(chocolate)
-    }
-}
-
