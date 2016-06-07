@@ -10,12 +10,6 @@ import UIKit
 
 class ChocolateCell: UITableViewCell {
     
-    static let priceFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
-        return formatter
-    }()
-    
     static let Identifier = "ChocolateCell"
     
     @IBOutlet private var countryNameLabel: UILabel!
@@ -26,6 +20,6 @@ class ChocolateCell: UITableViewCell {
     func configureWithChocolate(chocolate: Chocolate) {
         countryNameLabel.text = chocolate.countryName
         emojiLabel.text = "🍫" + chocolate.countryFlagEmoji
-        priceLabel.text = ChocolateCell.priceFormatter.stringFromNumber(chocolate.priceInDollars)
+        priceLabel.text = CurrencyFormatter.dollarsFormatter.stringFromNumber(chocolate.priceInDollars)
     }
 }

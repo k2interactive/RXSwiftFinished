@@ -26,7 +26,22 @@ class ChocolatesOfTheWorldViewController: UIViewController {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        //TODO: y u no work? 
         return .LightContent
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let identifier = identifierForSegue(segue)
+        
+        switch identifier {
+        case .GoToCart:
+            guard let cartVC = segue.destinationViewController as? CartViewController else {
+                assertionFailure("Couldn't get cart VC!")
+                return
+            }
+            
+            cartVC.cart = cart 
+        }
     }
     
     //MARK: Rx Setup
@@ -39,6 +54,14 @@ class ChocolatesOfTheWorldViewController: UIViewController {
         }.addDisposableTo(disposeBag)
     }
 
+}
+
+extension ChocolatesOfTheWorldViewController: SegueHandler {
+    
+    enum SegueIdentifier: String {
+        case
+        GoToCart
+    }
 }
 
 extension ChocolatesOfTheWorldViewController: UITableViewDataSource {
@@ -72,3 +95,4 @@ extension ChocolatesOfTheWorldViewController: UITableViewDelegate {
         cart.chocolates.value.append(chocolate)
     }
 }
+

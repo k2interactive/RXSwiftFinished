@@ -34,13 +34,13 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍫🇬🇮" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svk-4M-FeM">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="54"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="45"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFY-f8-VAH">
                                                             <rect key="frame" x="0.0" y="58" width="42" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -54,7 +54,7 @@
                                                                 <constraint firstAttribute="height" constant="21" id="TBy-Cx-xeb"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6RA-jC-QPS">
@@ -99,6 +99,9 @@
                     <navigationItem key="navigationItem" id="48d-aI-OQk">
                         <barButtonItem key="rightBarButtonItem" title="Item" id="Iy7-V5-7xl">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="I47-Ej-q1x" kind="show" identifier="GoToCart" id="9zs-EI-1GM"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -109,6 +112,78 @@
             </objects>
             <point key="canvasLocation" x="898" y="313"/>
         </scene>
+        <!--Cart View Controller-->
+        <scene sceneID="QQ5-4I-xHX">
+            <objects>
+                <viewController id="I47-Ej-q1x" customClass="CartViewController" customModule="Chocotastic" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ypu-5c-era"/>
+                        <viewControllerLayoutGuide type="bottom" id="k2E-ef-SAy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vp7-Rt-MFQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kRW-7S-Wph">
+                                <rect key="frame" x="20" y="74" width="560" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHe-rh-lzA">
+                                        <rect key="frame" x="0.0" y="0.0" width="442" height="36"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cost" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTV-4C-l4R">
+                                        <rect key="frame" x="442" y="8" width="118" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="lem-yl-HM6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAf-ab-i1o">
+                                <rect key="frame" x="20" y="120" width="560" height="30"/>
+                                <color key="backgroundColor" red="0.36480686070000001" green="0.2037941664" blue="0.0026239487340000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Checkout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXc-Eo-ab0">
+                                <rect key="frame" x="20" y="158" width="560" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="reset" destination="I47-Ej-q1x" eventType="touchUpInside" id="Dcw-2s-pFp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="kRW-7S-Wph" secondAttribute="trailing" constant="20" id="8ch-Ki-ii7"/>
+                            <constraint firstItem="vXc-Eo-ab0" firstAttribute="trailing" secondItem="YAf-ab-i1o" secondAttribute="trailing" id="IgZ-yh-CgL"/>
+                            <constraint firstItem="kRW-7S-Wph" firstAttribute="leading" secondItem="vp7-Rt-MFQ" secondAttribute="leading" constant="20" id="LHp-pK-Zmf"/>
+                            <constraint firstItem="vXc-Eo-ab0" firstAttribute="top" secondItem="YAf-ab-i1o" secondAttribute="bottom" constant="8" id="YJx-qr-zVb"/>
+                            <constraint firstItem="kRW-7S-Wph" firstAttribute="top" secondItem="Ypu-5c-era" secondAttribute="bottom" constant="10" id="b16-AH-o7l"/>
+                            <constraint firstAttribute="trailing" secondItem="YAf-ab-i1o" secondAttribute="trailing" constant="20" id="eo2-bW-da9"/>
+                            <constraint firstItem="YAf-ab-i1o" firstAttribute="top" secondItem="kRW-7S-Wph" secondAttribute="bottom" constant="10" id="vpu-Y8-bsZ"/>
+                            <constraint firstItem="YAf-ab-i1o" firstAttribute="leading" secondItem="vp7-Rt-MFQ" secondAttribute="leading" constant="20" id="wR5-5c-b1j"/>
+                            <constraint firstItem="vXc-Eo-ab0" firstAttribute="leading" secondItem="YAf-ab-i1o" secondAttribute="leading" id="wV1-Y1-8Qp"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="checkoutButton" destination="YAf-ab-i1o" id="MO0-DI-WTg"/>
+                        <outlet property="totalCostLabel" destination="HTV-4C-l4R" id="R1T-iE-cF8"/>
+                        <outlet property="totalItemsLabel" destination="bHe-rh-lzA" id="zUe-Cm-yrX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PCc-dr-KUg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1581" y="313"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ne5-kA-7xF">
             <objects>
@@ -118,6 +193,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="inz-qE-uR0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.36480686070000001" green="0.2037941664" blue="0.0026239487340000002" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

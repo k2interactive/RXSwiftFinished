@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9BC05E871D066753001CC382 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E861D066753001CC382 /* ShoppingCart.swift */; };
 		9BC05E891D066C71001CC382 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E881D066C71001CC382 /* CartViewController.swift */; };
+		9BC05E8B1D066E1C001CC382 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E8A1D066E1C001CC382 /* CurrencyFormatter.swift */; };
+		9BC05E8E1D06701A001CC382 /* SegueHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E8D1D06701A001CC382 /* SegueHandler.swift */; };
 		9BE373171D0511EE0024946D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE373161D0511EE0024946D /* AppDelegate.swift */; };
 		9BE373191D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE373181D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift */; };
 		9BE3731C1D0511EE0024946D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE3731A1D0511EE0024946D /* Main.storyboard */; };
@@ -24,6 +26,8 @@
 		2A20AB293DCC9F450AC8990D /* Pods_Chocotastic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chocotastic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC05E861D066753001CC382 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		9BC05E881D066C71001CC382 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		9BC05E8A1D066E1C001CC382 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
+		9BC05E8D1D06701A001CC382 /* SegueHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegueHandler.swift; sourceTree = "<group>"; };
 		9BE373131D0511EE0024946D /* Chocotastic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chocotastic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BE373161D0511EE0024946D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BE373181D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChocolatesOfTheWorldViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +61,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9BC05E8C1D06700E001CC382 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				9BC05E8D1D06701A001CC382 /* SegueHandler.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		9BE3730A1D0511EE0024946D = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +95,7 @@
 				9BE373181D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift */,
 				9BE3731A1D0511EE0024946D /* Main.storyboard */,
 				9BE373281D05145A0024946D /* Models */,
+				9BC05E8C1D06700E001CC382 /* Protocols */,
 				9BE373291D05145A0024946D /* Views */,
 				9BE3731D1D0511EE0024946D /* Assets.xcassets */,
 				9BE3731F1D0511EE0024946D /* LaunchScreen.storyboard */,
@@ -96,6 +109,7 @@
 			children = (
 				9BE3732A1D0514790024946D /* Chocolate.swift */,
 				9BC05E861D066753001CC382 /* ShoppingCart.swift */,
+				9BC05E8A1D066E1C001CC382 /* CurrencyFormatter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,9 +254,11 @@
 			files = (
 				9BC05E871D066753001CC382 /* ShoppingCart.swift in Sources */,
 				9BE3732D1D05164A0024946D /* ChocolateCell.swift in Sources */,
+				9BC05E8E1D06701A001CC382 /* SegueHandler.swift in Sources */,
 				9BE373191D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift in Sources */,
 				9BE373171D0511EE0024946D /* AppDelegate.swift in Sources */,
 				9BC05E891D066C71001CC382 /* CartViewController.swift in Sources */,
+				9BC05E8B1D066E1C001CC382 /* CurrencyFormatter.swift in Sources */,
 				9BE3732B1D0514790024946D /* Chocolate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
