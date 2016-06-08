@@ -105,7 +105,9 @@
 				5EC598524386B261206F20E8 /* Pods */,
 				CC571C24853B12912310CB0F /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		9BE373141D0511EE0024946D /* Products */ = {
 			isa = PBXGroup;

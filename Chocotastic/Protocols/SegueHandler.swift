@@ -13,25 +13,25 @@ import UIKit
  https://www.natashatherobot.com/protocol-oriented-segue-identifiers-swift/
  */
 protocol SegueHandler {
-    associatedtype SegueIdentifier: RawRepresentable
+  associatedtype SegueIdentifier: RawRepresentable
 }
 
 extension SegueHandler //Default implementation...
-    where Self: UIViewController, //for view controllers...
-    SegueIdentifier.RawValue == String { //who have String segue identifiers.
-    
-    func performSegueWithIdentifier(identifier: SegueIdentifier, sender: AnyObject? = nil) {
-        performSegueWithIdentifier(identifier.rawValue,
-                                   sender: sender)
+  where Self: UIViewController, //for view controllers...
+SegueIdentifier.RawValue == String { //who have String segue identifiers.
+  
+  func performSegueWithIdentifier(identifier: SegueIdentifier, sender: AnyObject? = nil) {
+    performSegueWithIdentifier(identifier.rawValue,
+                               sender: sender)
+  }
+  
+  func identifierForSegue(segue: UIStoryboardSegue) -> SegueIdentifier {
+    guard let
+      stringIdentifier = segue.identifier,
+      identifier = SegueIdentifier(rawValue: stringIdentifier) else {
+        fatalError("Couldn't find identifier for segue!")
     }
     
-    func identifierForSegue(segue: UIStoryboardSegue) -> SegueIdentifier {
-        guard let
-            stringIdentifier = segue.identifier,
-            identifier = SegueIdentifier(rawValue: stringIdentifier) else {
-                fatalError("Couldn't find identifier for segue!")
-        }
-        
-        return identifier
-    }
+    return identifier
+  }
 }

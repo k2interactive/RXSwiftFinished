@@ -9,10 +9,10 @@
 import Foundation
 
 enum CurrencyFormatter {
-    static let dollarsFormatter: NSNumberFormatter = {
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .CurrencyStyle
-        formatter.currencyCode = "USD"
-        return formatter
-    }()
+  static let dollarsFormatter: NSNumberFormatter = {
+    let formatter = NSNumberFormatter()
+    formatter.numberStyle = .CurrencyStyle
+    formatter.currencyCode = "USD"
+    return formatter
+  }()
 }
