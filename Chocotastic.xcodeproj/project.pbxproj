@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9B4EDDA31D067DD000C26AD9 /* BillingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EDDA21D067DD000C26AD9 /* BillingInfoViewController.swift */; };
-		9B4EDDA51D06895700C26AD9 /* AutoFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EDDA41D06895700C26AD9 /* AutoFormatter.swift */; };
-		9B4EDDA71D068A2100C26AD9 /* CreditCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EDDA61D068A2100C26AD9 /* CreditCardType.swift */; };
+		9B4EDDA71D068A2100C26AD9 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EDDA61D068A2100C26AD9 /* CardType.swift */; };
 		9BC05E871D066753001CC382 /* ShoppingCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E861D066753001CC382 /* ShoppingCart.swift */; };
 		9BC05E891D066C71001CC382 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E881D066C71001CC382 /* CartViewController.swift */; };
 		9BC05E8B1D066E1C001CC382 /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC05E8A1D066E1C001CC382 /* CurrencyFormatter.swift */; };
@@ -28,8 +27,7 @@
 		24C6A4382DED490646C5C146 /* Pods-Chocotastic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chocotastic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chocotastic/Pods-Chocotastic.debug.xcconfig"; sourceTree = "<group>"; };
 		2A20AB293DCC9F450AC8990D /* Pods_Chocotastic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chocotastic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4EDDA21D067DD000C26AD9 /* BillingInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingInfoViewController.swift; sourceTree = "<group>"; };
-		9B4EDDA41D06895700C26AD9 /* AutoFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoFormatter.swift; sourceTree = "<group>"; };
-		9B4EDDA61D068A2100C26AD9 /* CreditCardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditCardType.swift; sourceTree = "<group>"; };
+		9B4EDDA61D068A2100C26AD9 /* CardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
 		9BC05E861D066753001CC382 /* ShoppingCart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingCart.swift; sourceTree = "<group>"; };
 		9BC05E881D066C71001CC382 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		9BC05E8A1D066E1C001CC382 /* CurrencyFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				9BC05E8D1D06701A001CC382 /* SegueHandler.swift */,
-				9B4EDDA41D06895700C26AD9 /* AutoFormatter.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -118,7 +115,7 @@
 				9BE3732A1D0514790024946D /* Chocolate.swift */,
 				9BC05E861D066753001CC382 /* ShoppingCart.swift */,
 				9BC05E8A1D066E1C001CC382 /* CurrencyFormatter.swift */,
-				9B4EDDA61D068A2100C26AD9 /* CreditCardType.swift */,
+				9B4EDDA61D068A2100C26AD9 /* CardType.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -268,9 +265,8 @@
 				9BE373191D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift in Sources */,
 				9BE373171D0511EE0024946D /* AppDelegate.swift in Sources */,
 				9BC05E891D066C71001CC382 /* CartViewController.swift in Sources */,
-				9B4EDDA51D06895700C26AD9 /* AutoFormatter.swift in Sources */,
 				9BC05E8B1D066E1C001CC382 /* CurrencyFormatter.swift in Sources */,
-				9B4EDDA71D068A2100C26AD9 /* CreditCardType.swift in Sources */,
+				9B4EDDA71D068A2100C26AD9 /* CardType.swift in Sources */,
 				9BE3732B1D0514790024946D /* Chocolate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
