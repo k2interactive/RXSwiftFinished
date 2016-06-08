@@ -26,8 +26,23 @@ class BillingInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "💳 Info"
+        
         setupCardImageDisplay()
         setupTextChangeHandling()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let identifier = identifierForSegue(segue)
+        switch identifier {
+        case .PurchaseSuccess:
+            guard let destination = segue.destinationViewController as? ChocolateIsComingViewController else {
+                assertionFailure("Couldn't get chocolate is coming VC!")
+                return
+            }
+            
+            destination.cardType = cardType.value
+        }
     }
     
     //MARK: - RX Setup
@@ -152,5 +167,12 @@ class BillingInfoViewController: UIViewController {
         if cvv.characters.count == self.cardType.value.cvvDigits {
             self.cvvTextField.resignFirstResponder()
         }
+    }
+}
+
+extension BillingInfoViewController: SegueHandler {
+    enum SegueIdentifier: String {
+        case
+        PurchaseSuccess
     }
 }
