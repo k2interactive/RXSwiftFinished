@@ -18,8 +18,10 @@ class BillingInfoViewController: UIViewController {
     @IBOutlet private var cvvTextField: ValidatingTextField!
     @IBOutlet private var purchaseButton: UIButton!
     
-    let cardType: Variable<CardType> = Variable(.Unknown)
-    let disposeBag = DisposeBag()
+    private let cardType: Variable<CardType> = Variable(.Unknown)
+    private let disposeBag = DisposeBag()
+    private let throttleInterval = 0.1
+    
     
     //MARK: - View Lifecycle
     
@@ -60,6 +62,7 @@ class BillingInfoViewController: UIViewController {
     private func setupTextChangeHandling() {
         let creditCardValid = creditCardNumberTextField
             .rx_text
+            .throttle(throttleInterval, scheduler: MainScheduler.instance)
             .map { self.validateCardTextChange($0) }
             .shareReplay(1)
         
@@ -69,6 +72,7 @@ class BillingInfoViewController: UIViewController {
         
         let expirationValid = expirationDateTextField
             .rx_text
+            .throttle(throttleInterval, scheduler: MainScheduler.instance)
             .map { self.validateExpirationDateTextChange($0) }
             .shareReplay(1)
         
