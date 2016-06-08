@@ -15,7 +15,6 @@ class ChocolateCell: UITableViewCell {
     @IBOutlet private var countryNameLabel: UILabel!
     @IBOutlet private var emojiLabel: UILabel!
     @IBOutlet private var priceLabel: UILabel!
-    @IBOutlet private var addButton: UIButton!
     
     func configureWithChocolate(chocolate: Chocolate) {
         countryNameLabel.text = chocolate.countryName

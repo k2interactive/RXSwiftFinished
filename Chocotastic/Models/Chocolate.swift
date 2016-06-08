@@ -8,11 +8,20 @@
 
 import Foundation
 
-struct Chocolate {
+//MARK: - Equatable Protocol implamentation
+
+func ==(lhs: Chocolate, rhs: Chocolate) -> Bool {
+    return (lhs.countryName == rhs.countryName
+        && lhs.priceInDollars == rhs.priceInDollars
+        && lhs.countryFlagEmoji == rhs.countryFlagEmoji)
+}
+
+//MARK: - Mmmm...chocolate...
+
+struct Chocolate: Equatable {
     let priceInDollars: Float
     let countryName: String
     let countryFlagEmoji: String
-    
     
     // An array of chocolate from europe
     static let ofEurope: [Chocolate] = {
@@ -40,6 +49,12 @@ struct Chocolate {
             swiss,
         ]
     }()
+}
+
+extension Chocolate: Hashable {
+    var hashValue: Int {
+        return self.countryFlagEmoji.hashValue
+    }
 }
 
 

@@ -20,6 +20,7 @@ class CartViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        title = "Cart"
         configureFromCart()
     }
     
@@ -34,18 +35,7 @@ class CartViewController: UIViewController {
         }
         
         let cart = ShoppingCart.sharedCart
-        
-        let flags = cart.chocolates.value.reduce("") {
-            currentString, chocolate in
-            
-            if !currentString.containsString(chocolate.countryFlagEmoji) {
-                return currentString + chocolate.countryFlagEmoji
-            }
-            
-            return currentString
-        }
-        
-        totalItemsLabel.text = flags + "🍫"
+        totalItemsLabel.text = cart.itemCountString()
         
         let cost = cart.totalCost()
         totalCostLabel.text = CurrencyFormatter.dollarsFormatter.stringFromNumber(cost)
