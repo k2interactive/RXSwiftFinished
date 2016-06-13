@@ -362,12 +362,11 @@
             </objects>
             <point key="canvasLocation" x="2991" y="313"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Chocolate Navigation Controller-->
         <scene sceneID="ne5-kA-7xF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Edq-uY-yvD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Edq-uY-yvD" customClass="ChocolateNavigationController" customModule="Chocotastic" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="inz-qE-uR0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

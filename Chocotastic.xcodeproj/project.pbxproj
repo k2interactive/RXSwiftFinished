@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B4068D31D0E5539009859C5 /* ChocolateNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4068D21D0E5539009859C5 /* ChocolateNavigationController.swift */; };
 		9B4EDDA31D067DD000C26AD9 /* BillingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EDDA21D067DD000C26AD9 /* BillingInfoViewController.swift */; };
 		9B4EDDA71D068A2100C26AD9 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EDDA61D068A2100C26AD9 /* CardType.swift */; };
 		9B4EDDAA1D0714FD00C26AD9 /* String+CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4EDDA91D0714FD00C26AD9 /* String+CreditCard.swift */; };
@@ -33,6 +34,7 @@
 /* Begin PBXFileReference section */
 		24C6A4382DED490646C5C146 /* Pods-Chocotastic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chocotastic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Chocotastic/Pods-Chocotastic.debug.xcconfig"; sourceTree = "<group>"; };
 		2A20AB293DCC9F450AC8990D /* Pods_Chocotastic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chocotastic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B4068D21D0E5539009859C5 /* ChocolateNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChocolateNavigationController.swift; sourceTree = "<group>"; };
 		9B4EDDA21D067DD000C26AD9 /* BillingInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BillingInfoViewController.swift; sourceTree = "<group>"; };
 		9B4EDDA61D068A2100C26AD9 /* CardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
 		9B4EDDA91D0714FD00C26AD9 /* String+CreditCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+CreditCard.swift"; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				9BC05E881D066C71001CC382 /* CartViewController.swift */,
 				9BECE37F1D07C934003242EE /* ChocolateIsComingViewController.swift */,
 				9BE373181D0511EE0024946D /* ChocolatesOfTheWorldViewController.swift */,
+				9B4068D21D0E5539009859C5 /* ChocolateNavigationController.swift */,
 				9BE3731A1D0511EE0024946D /* Main.storyboard */,
 				9B4EDDA81D0714F000C26AD9 /* Extensions */,
 				9BE373281D05145A0024946D /* Models */,
@@ -305,6 +308,7 @@
 				9B51488A1D078A5100284F30 /* NSDate+CurrentComponents.swift in Sources */,
 				9B4EDDA71D068A2100C26AD9 /* CardType.swift in Sources */,
 				9B5148881D07882F00284F30 /* String+ExpirationDate.swift in Sources */,
+				9B4068D31D0E5539009859C5 /* ChocolateNavigationController.swift in Sources */,
 				9BE3732B1D0514790024946D /* Chocolate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
