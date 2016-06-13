@@ -23,6 +23,8 @@ class ChocolatesOfTheWorldViewController: UIViewController {
     super.viewDidLoad()
     title = "Chocolate!!!"
     
+    //TODO: Figure out how to disable editing 
+    
     setupCellConfiguration()
     setupCellTapHandling()
     setupCartObserver()
