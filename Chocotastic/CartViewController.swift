@@ -24,10 +24,6 @@ class CartViewController: UIViewController {
     configureFromCart()
   }
   
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return .LightContent
-  }
-  
   private func configureFromCart() {
     guard checkoutButton != nil else {
       //UI has not been instantiated yet. Bail!

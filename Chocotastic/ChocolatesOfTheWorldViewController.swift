@@ -28,11 +28,6 @@ class ChocolatesOfTheWorldViewController: UIViewController {
     setupCartObserver()
   }
   
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    //TODO: y u no work?
-    return .LightContent
-  }
-  
   //MARK: Rx Setup
   
   private func setupCellConfiguration() {
