@@ -56,6 +56,3 @@ extension Chocolate: Hashable {
     return self.countryFlagEmoji.hashValue
   }
 }
-
-
-
