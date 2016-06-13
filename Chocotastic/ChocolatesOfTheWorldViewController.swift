@@ -21,7 +21,7 @@ class ChocolatesOfTheWorldViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.title = "Chocolate!!!"
+    title = "Chocolate!!!"
     
     setupCellConfiguration()
     setupCellTapHandling()
