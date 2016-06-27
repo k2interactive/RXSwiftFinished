@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-struct ShoppingCart {
+class ShoppingCart {
   
   static let sharedCart = ShoppingCart()
   
