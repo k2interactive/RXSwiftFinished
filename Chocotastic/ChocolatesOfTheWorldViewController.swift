@@ -14,7 +14,7 @@ class ChocolatesOfTheWorldViewController: UIViewController {
   
   @IBOutlet private var cartButton: UIBarButtonItem!
   @IBOutlet private var tableView: UITableView!
-  let chocolates = Observable.just(Chocolate.ofEurope)
+  let europeanChocolates = Observable.just(Chocolate.ofEurope)
   let disposeBag = DisposeBag()
   
   //MARK: View Lifecycle
@@ -34,7 +34,7 @@ class ChocolatesOfTheWorldViewController: UIViewController {
   
   private func setupCellConfiguration() {
     //Equivalent of cell for row at index path
-    chocolates.bindTo(tableView.rx_itemsWithCellIdentifier(ChocolateCell.Identifier, cellType: ChocolateCell.self)) {
+    europeanChocolates.bindTo(tableView.rx_itemsWithCellIdentifier(ChocolateCell.Identifier, cellType: ChocolateCell.self)) {
       row, chocolate, cell in
       cell.configureWithChocolate(chocolate)
       }
