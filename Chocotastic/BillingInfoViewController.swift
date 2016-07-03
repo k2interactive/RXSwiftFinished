@@ -64,7 +64,6 @@ class BillingInfoViewController: UIViewController {
       .rx_text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
       .map { self.validateCardTextChange($0) }
-      .shareReplay(1)
     
     creditCardValid
       .subscribeNext { self.creditCardNumberTextField.valid = $0 }
@@ -74,7 +73,6 @@ class BillingInfoViewController: UIViewController {
       .rx_text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
       .map { self.validateExpirationDateTextChange($0) }
-      .shareReplay(1)
     
     expirationValid
       .subscribeNext { self.expirationDateTextField.valid = $0 }
@@ -83,7 +81,6 @@ class BillingInfoViewController: UIViewController {
     let cvvValid = cvvTextField
       .rx_text
       .map { self.validateCVVTextChange($0) }
-      .shareReplay(1)
     
     cvvValid
       .subscribeNext { self.cvvTextField.valid = $0 }
@@ -93,7 +90,6 @@ class BillingInfoViewController: UIViewController {
       .combineLatest(creditCardValid, expirationValid, cvvValid) {
         $0 && $1 && $2 //All must be true
       }
-      .shareReplay(1)
     
     everythingValid
       .bindTo(purchaseButton.rx_enabled)
