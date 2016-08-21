@@ -33,6 +33,6 @@ class ChocolateCell: UITableViewCell {
   func configureWithChocolate(chocolate: Chocolate) {
     countryNameLabel.text = chocolate.countryName
     emojiLabel.text = "🍫" + chocolate.countryFlagEmoji
-    priceLabel.text = CurrencyFormatter.dollarsFormatter.stringFromNumber(chocolate.priceInDollars)
+    priceLabel.text = CurrencyFormatter.dollarsFormatter.rw_string(from: chocolate.priceInDollars)
   }
 }

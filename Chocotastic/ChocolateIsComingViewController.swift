@@ -62,7 +62,7 @@ class ChocolateIsComingViewController: UIViewController {
     
     let cart = ShoppingCart.sharedCart
     
-    costLabel.text = CurrencyFormatter.dollarsFormatter.stringFromNumber(cart.totalCost())
+    costLabel.text = CurrencyFormatter.dollarsFormatter.rw_string(from: cart.totalCost())
     
     orderLabel.text = cart.itemCountString()
   }

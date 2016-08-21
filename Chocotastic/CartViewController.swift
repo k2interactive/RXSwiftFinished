@@ -48,7 +48,7 @@ class CartViewController: UIViewController {
     totalItemsLabel.text = cart.itemCountString()
     
     let cost = cart.totalCost()
-    totalCostLabel.text = CurrencyFormatter.dollarsFormatter.stringFromNumber(cost)
+    totalCostLabel.text = CurrencyFormatter.dollarsFormatter.rw_string(from: cost)
     
     //Disable checkout if there's nothing to check out with
     checkoutButton.isEnabled = (cost > 0)

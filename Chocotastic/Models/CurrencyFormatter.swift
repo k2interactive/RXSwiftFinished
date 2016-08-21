@@ -30,3 +30,11 @@ enum CurrencyFormatter {
     return formatter
   }()
 }
+
+extension NumberFormatter {
+  
+  ///Convenience method to prevent having to cast floats to NSNumbers every single time.
+  func rw_string(from float: Float) -> String? {
+    return self.string(from: NSNumber(value: float))
+  }
+}
