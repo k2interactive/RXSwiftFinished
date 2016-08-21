@@ -77,7 +77,7 @@ class BillingInfoViewController: UIViewController {
     let creditCardValid = creditCardNumberTextField
       .rx_text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
-      .map { self.validateCardTextChange($0) }
+      .map { self.validateCardText($0) }
     
     creditCardValid
       .subscribeNext { self.creditCardNumberTextField.valid = $0 }
@@ -86,7 +86,7 @@ class BillingInfoViewController: UIViewController {
     let expirationValid = expirationDateTextField
       .rx_text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
-      .map { self.validateExpirationDateTextChange($0) }
+      .map { self.validateExpirationDateText($0) }
     
     expirationValid
       .subscribeNext { self.expirationDateTextField.valid = $0 }
@@ -94,7 +94,7 @@ class BillingInfoViewController: UIViewController {
     
     let cvvValid = cvvTextField
       .rx_text
-      .map { self.validateCVVTextChange($0) }
+      .map { self.validateCVVText($0) }
     
     cvvValid
       .subscribeNext { self.cvvTextField.valid = $0 }
@@ -112,7 +112,7 @@ class BillingInfoViewController: UIViewController {
   
   //MARK: - Validation methods
   
-  func validateCardTextChange(cardText: String) -> Bool {
+  func validateCardText(cardText: String) -> Bool {
     let noWhitespace = cardText.rw_removeSpaces()
     
     updateCardType(noWhitespace)
@@ -132,7 +132,7 @@ class BillingInfoViewController: UIViewController {
     return noWhitespace.characters.count == self.cardType.value.expectedDigits
   }
   
-  func validateExpirationDateTextChange(expiration: String) -> Bool {
+  func validateExpirationDateText(expiration: String) -> Bool {
     let strippedSlashExpiration = expiration.rw_removeSlash()
     
     formatFromExpirationDate(strippedSlashExpiration)
@@ -141,7 +141,7 @@ class BillingInfoViewController: UIViewController {
     return strippedSlashExpiration.rw_isValidExpirationDate()
   }
   
-  func validateCVVTextChange(cvv: String) -> Bool {
+  func validateCVVText(cvv: String) -> Bool {
     guard cvv.rw_allCharactersAreNumbers() else {
       //Someone snuck a letter in here.
       return false
@@ -184,6 +184,7 @@ class BillingInfoViewController: UIViewController {
   }
 }
 
+//MARK: - SegueHandler
 extension BillingInfoViewController: SegueHandler {
   enum SegueIdentifier: String {
     case

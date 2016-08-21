@@ -74,13 +74,14 @@ class ChocolatesOfTheWorldViewController: UIViewController {
     ShoppingCart.sharedCart.chocolates.asObservable()
       .subscribeNext {
         chocolates in
-        self.cartButton.title = "\(chocolates.count) 🍫"
+        self.cartButton.title = "\(chocolates.count) \u{1f36b}"
       }
       .addDisposableTo(disposeBag)
   }
   
 }
 
+//MARK: - SegueHandler
 extension ChocolatesOfTheWorldViewController: SegueHandler {
   
   enum SegueIdentifier: String {

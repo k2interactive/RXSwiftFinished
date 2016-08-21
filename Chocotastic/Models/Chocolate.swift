@@ -22,7 +22,7 @@
 
 import Foundation
 
-//MARK: - Equatable Protocol implamentation
+//MARK: - Equatable Protocol implementation
 
 func ==(lhs: Chocolate, rhs: Chocolate) -> Bool {
   return (lhs.countryName == rhs.countryName
