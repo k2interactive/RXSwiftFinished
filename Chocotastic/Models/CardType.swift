@@ -54,7 +54,7 @@ enum CardType {
     } //Else, we need more info, keep going
     
     
-    let firstTwo = string.rw_integerValueOfFirstCharacters(2)
+    let firstTwo = string.rw_integerValueOfFirst(characters: 2)
     guard firstTwo != NSNotFound else {
       return .Unknown
     }
@@ -71,7 +71,7 @@ enum CardType {
       break
     }
     
-    let firstThree = string.rw_integerValueOfFirstCharacters(3)
+    let firstThree = string.rw_integerValueOfFirst(characters: 3)
     guard firstThree != NSNotFound else {
       return .Unknown
     }
@@ -85,7 +85,7 @@ enum CardType {
     }
     
     
-    let firstFour = string.rw_integerValueOfFirstCharacters(4)
+    let firstFour = string.rw_integerValueOfFirst(characters: 4)
     guard firstFour != NSNotFound else {
       return .Unknown
     }
@@ -100,7 +100,7 @@ enum CardType {
       break
     }
     
-    let firstSix = string.rw_integerValueOfFirstCharacters(6)
+    let firstSix = string.rw_integerValueOfFirst(characters: 6)
     guard firstSix != NSNotFound else {
       return .Unknown
     }

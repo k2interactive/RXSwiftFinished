@@ -77,7 +77,7 @@ class BillingInfoViewController: UIViewController {
     let creditCardValid = creditCardNumberTextField
       .rx_text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
-      .map { self.validateCardText($0) }
+      .map { self.validate(cardText: $0) }
     
     creditCardValid
       .subscribeNext { self.creditCardNumberTextField.valid = $0 }
@@ -86,7 +86,7 @@ class BillingInfoViewController: UIViewController {
     let expirationValid = expirationDateTextField
       .rx_text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
-      .map { self.validateExpirationDateText($0) }
+      .map { self.validate(expirationDateText: $0) }
     
     expirationValid
       .subscribeNext { self.expirationDateTextField.valid = $0 }
@@ -94,7 +94,7 @@ class BillingInfoViewController: UIViewController {
     
     let cvvValid = cvvTextField
       .rx_text
-      .map { self.validateCVVText($0) }
+      .map { self.validate(cvvText: $0) }
     
     cvvValid
       .subscribeNext { self.cvvTextField.valid = $0 }
@@ -112,12 +112,12 @@ class BillingInfoViewController: UIViewController {
   
   //MARK: - Validation methods
   
-  func validateCardText(cardText: String) -> Bool {
+  func validate(cardText: String) -> Bool {
     let noWhitespace = cardText.rw_removeSpaces()
     
-    updateCardType(noWhitespace)
-    formatCardNumber(noWhitespace)
-    advanceFromCardNumberIfNecessary(noWhitespace)
+    updateCardType(using: noWhitespace)
+    formatCardNumber(using: noWhitespace)
+    advanceIfNecessary(noSpacesCardNumber: noWhitespace)
     
     guard cardType.value != .Unknown else {
       //Definitely not valid if the type is unknown.
@@ -132,52 +132,52 @@ class BillingInfoViewController: UIViewController {
     return noWhitespace.characters.count == self.cardType.value.expectedDigits
   }
   
-  func validateExpirationDateText(expiration: String) -> Bool {
+  func validate(expirationDateText expiration: String) -> Bool {
     let strippedSlashExpiration = expiration.rw_removeSlash()
     
-    formatFromExpirationDate(strippedSlashExpiration)
-    advanceFromExpirationDateIfNecessary(strippedSlashExpiration)
+    formatExpirationDate(using: strippedSlashExpiration)
+    advanceIfNecessary(expirationNoSpacesOrSlash:  strippedSlashExpiration)
     
     return strippedSlashExpiration.rw_isValidExpirationDate()
   }
   
-  func validateCVVText(cvv: String) -> Bool {
+  func validate(cvvText cvv: String) -> Bool {
     guard cvv.rw_allCharactersAreNumbers() else {
       //Someone snuck a letter in here.
       return false
     }
-    dismissFromCVVIfNecessary(cvv)
+    dismissIfNecessary(cvv: cvv)
     return cvv.characters.count == self.cardType.value.cvvDigits
   }
   
   
   //MARK: Single-serve helper functions
   
-  private func updateCardType(noSpacesNumber: String) {
-    cardType.value = CardType.fromString(noSpacesNumber)
+  private func updateCardType(using noSpacesNumber: String) {
+    cardType.value = CardType.fromString(string: noSpacesNumber)
   }
   
-  private func formatCardNumber(noSpacesCardNumber: String) {
-    creditCardNumberTextField.text = self.cardType.value.format(noSpacesCardNumber)
+  private func formatCardNumber(using noSpacesCardNumber: String) {
+    creditCardNumberTextField.text = self.cardType.value.format(noSpaces: noSpacesCardNumber)
   }
   
-  func advanceFromCardNumberIfNecessary(noSpacesNumber: String) {
-    if noSpacesNumber.characters.count == self.cardType.value.expectedDigits {
+  func advanceIfNecessary(noSpacesCardNumber: String) {
+    if noSpacesCardNumber.characters.count == self.cardType.value.expectedDigits {
       self.expirationDateTextField.becomeFirstResponder()
     }
   }
   
-  func formatFromExpirationDate(expirationNoSpacesOrSlash: String) {
+  func formatExpirationDate(using expirationNoSpacesOrSlash: String) {
     expirationDateTextField.text = expirationNoSpacesOrSlash.rw_addSlash()
   }
   
-  func advanceFromExpirationDateIfNecessary(expirationNoSpacesOrSlash: String) {
+  func advanceIfNecessary(expirationNoSpacesOrSlash: String) {
     if expirationNoSpacesOrSlash.characters.count == 6 { //mmyyyy
       self.cvvTextField.becomeFirstResponder()
     }
   }
   
-  func dismissFromCVVIfNecessary(cvv: String) {
+  func dismissIfNecessary(cvv: String) {
     if cvv.characters.count == self.cardType.value.cvvDigits {
       let _ = self.cvvTextField.resignFirstResponder()
     }

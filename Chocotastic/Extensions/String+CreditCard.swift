@@ -29,16 +29,16 @@ extension String {
   }
   
   
-  func rw_integerValueOfFirstCharacters(characterCount: Int) -> Int {
+  func rw_integerValueOfFirst(characters: Int) -> Int {
     guard rw_allCharactersAreNumbers() else {
       return NSNotFound
     }
     
-    if characterCount > self.characters.count {
+    if characters > self.characters.count {
       return NSNotFound
     }
     
-    let indexToStopAt = self.index(self.startIndex, offsetBy: characterCount)
+    let indexToStopAt = self.index(self.startIndex, offsetBy: characters)
     let substring = self.substring(to: indexToStopAt)
     guard let integerValue = Int(substring) else {
       return NSNotFound
