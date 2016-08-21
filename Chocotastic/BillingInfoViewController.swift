@@ -66,7 +66,7 @@ class BillingInfoViewController: UIViewController {
   private func setupCardImageDisplay() {
     cardType
       .asObservable()
-      .subscribeNext({
+      .subscribe(onNext: {
         cardType in
         self.creditCardImageView.image = cardType.image
       })
@@ -75,29 +75,35 @@ class BillingInfoViewController: UIViewController {
   
   private func setupTextChangeHandling() {
     let creditCardValid = creditCardNumberTextField
-      .rx_text
+      .rx
+      .textInput
+      .text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
       .map { self.validate(cardText: $0) }
     
     creditCardValid
-      .subscribeNext { self.creditCardNumberTextField.valid = $0 }
+      .subscribe(onNext: { self.creditCardNumberTextField.valid = $0 })
       .addDisposableTo(disposeBag)
     
     let expirationValid = expirationDateTextField
-      .rx_text
+      .rx
+      .textInput
+      .text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
       .map { self.validate(expirationDateText: $0) }
     
     expirationValid
-      .subscribeNext { self.expirationDateTextField.valid = $0 }
+      .subscribe(onNext: { self.expirationDateTextField.valid = $0 })
       .addDisposableTo(disposeBag)
     
     let cvvValid = cvvTextField
-      .rx_text
+      .rx
+      .textInput
+      .text
       .map { self.validate(cvvText: $0) }
     
     cvvValid
-      .subscribeNext { self.cvvTextField.valid = $0 }
+      .subscribe(onNext: { self.cvvTextField.valid = $0 })
       .addDisposableTo(disposeBag)
     
     let everythingValid = Observable
@@ -106,7 +112,7 @@ class BillingInfoViewController: UIViewController {
       }
     
     everythingValid
-      .bindTo(purchaseButton.rx_enabled)
+      .bindTo(purchaseButton.rx.enabled)
       .addDisposableTo(disposeBag)
   }
   

@@ -48,9 +48,12 @@ class ChocolatesOfTheWorldViewController: UIViewController {
   
   private func setupCellConfiguration() {
     //Equivalent of cell for row at index path
-    europeanChocolates.bindTo(tableView.rx_itemsWithCellIdentifier(ChocolateCell.Identifier, cellType: ChocolateCell.self)) {
-      row, chocolate, cell in
-      cell.configureWithChocolate(chocolate)
+    europeanChocolates
+      .bindTo(tableView
+        .rx
+        .items(cellIdentifier: ChocolateCell.Identifier, cellType: ChocolateCell.self)) {
+          row, chocolate, cell in
+          cell.configureWithChocolate(chocolate: chocolate)
       }
       .addDisposableTo(disposeBag)
   }
@@ -58,24 +61,25 @@ class ChocolatesOfTheWorldViewController: UIViewController {
   private func setupCellTapHandling() {
     //Equivalent of did select row at index path
     tableView
-      .rx_modelSelected(Chocolate)
-      .subscribeNext {
+      .rx
+      .modelSelected(Chocolate.self)
+      .subscribe(onNext: {
         chocolate in
         ShoppingCart.sharedCart.chocolates.value.append(chocolate)
         
         if let selectedRowIndexPath = self.tableView.indexPathForSelectedRow {
           self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
         }
-      }
+      })
       .addDisposableTo(disposeBag)
   }
   
   private func setupCartObserver() {
     ShoppingCart.sharedCart.chocolates.asObservable()
-      .subscribeNext {
+      .subscribe(onNext: {
         chocolates in
         self.cartButton.title = "\(chocolates.count) \u{1f36b}"
-      }
+      })
       .addDisposableTo(disposeBag)
   }
   
