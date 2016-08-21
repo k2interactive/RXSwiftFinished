@@ -22,11 +22,11 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
   
   static func rw_gregorianCalendar() -> NSCalendar {
     //All the years we're dealing with are in the gregorian calendar, so use that in case the system calendar is different.
-    guard let calendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian) else {
+    guard let calendar = NSCalendar(calendarIdentifier: .gregorian) else {
       fatalError("Couldn't instantiate gregorian calendar?!")
     }
     
@@ -34,14 +34,14 @@ extension NSDate {
   }
   
   func rw_currentYear() -> Int {
-    return NSDate
+    return Date
       .rw_gregorianCalendar()
-      .component(.Year, fromDate: self)
+      .component(.year, from: self)
   }
   
   func rw_currentMonth() -> Int {
-    return NSDate
+    return Date
       .rw_gregorianCalendar()
-      .component(.Month, fromDate: self)
+      .component(.month, from: self)
   }
 }

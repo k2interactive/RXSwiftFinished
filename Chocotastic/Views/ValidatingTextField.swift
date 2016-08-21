@@ -54,9 +54,9 @@ class ValidatingTextField: UITextField {
     if !valid && hasBeenExited {
       //Only color the background if the user has tried to
       //input things at least once.
-      self.backgroundColor = .redColor()
+      self.backgroundColor = .red
     } else {
-      self.backgroundColor = .clearColor()
+      self.backgroundColor = .clear
     }
   }
 }

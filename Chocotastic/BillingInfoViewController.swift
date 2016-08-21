@@ -48,11 +48,11 @@ class BillingInfoViewController: UIViewController {
     setupTextChangeHandling()
   }
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    let identifier = identifierForSegue(segue)
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let identifier = identifierForSegue(segue: segue)
     switch identifier {
     case .PurchaseSuccess:
-      guard let destination = segue.destinationViewController as? ChocolateIsComingViewController else {
+      guard let destination = segue.destination as? ChocolateIsComingViewController else {
         assertionFailure("Couldn't get chocolate is coming VC!")
         return
       }
@@ -179,7 +179,7 @@ class BillingInfoViewController: UIViewController {
   
   func dismissFromCVVIfNecessary(cvv: String) {
     if cvv.characters.count == self.cardType.value.cvvDigits {
-      self.cvvTextField.resignFirstResponder()
+      let _ = self.cvvTextField.resignFirstResponder()
     }
   }
 }

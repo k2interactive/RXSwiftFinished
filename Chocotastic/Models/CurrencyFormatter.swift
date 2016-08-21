@@ -23,9 +23,9 @@
 import Foundation
 
 enum CurrencyFormatter {
-  static let dollarsFormatter: NSNumberFormatter = {
-    let formatter = NSNumberFormatter()
-    formatter.numberStyle = .CurrencyStyle
+  static let dollarsFormatter: NumberFormatter = {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
     formatter.currencyCode = "USD"
     return formatter
   }()

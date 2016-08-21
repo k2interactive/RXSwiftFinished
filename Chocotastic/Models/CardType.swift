@@ -153,9 +153,13 @@ enum CardType {
       return noSpaces
     }
     
-    let index4 = noSpaces.startIndex.advancedBy(4)
+    
+    let startIndex = noSpaces.startIndex
+
+    
+    let index4 = noSpaces.index(startIndex, offsetBy: 4)
     //All cards start with four digits before the get to spaces
-    let firstFour = noSpaces.substringToIndex(index4)
+    let firstFour = noSpaces.substring(to: index4)
     var formattedString = firstFour + " "
     
     switch self {
@@ -163,36 +167,37 @@ enum CardType {
       //Amex format is xxxx xxxxxx xxxxx
       guard noSpaces.characters.count > 10 else {
         //No further formatting required.
-        return formattedString + noSpaces.substringFromIndex(index4)
+        return formattedString + noSpaces.substring(from: index4)
       }
       
-      let index10 = noSpaces.startIndex.advancedBy(10)
+      
+      let index10 = noSpaces.index(startIndex, offsetBy: 10)
       let nextSixRange = Range(index4..<index10)
-      let nextSix = noSpaces.substringWithRange(nextSixRange)
-      let remaining = noSpaces.substringFromIndex(index10)
+      let nextSix = noSpaces.substring(with: nextSixRange)
+      let remaining = noSpaces.substring(from: index10)
       return formattedString + nextSix + " " + remaining
     default:
       //Other cards are formatted as xxxx xxxx xxxx xxxx
       guard noSpaces.characters.count > 8 else {
         //No further formatting required.
-        return formattedString + noSpaces.substringFromIndex(index4)
+        return formattedString + noSpaces.substring(from: index4)
       }
       
-      let index8 = noSpaces.startIndex.advancedBy(8)
+      let index8 = noSpaces.index(startIndex, offsetBy: 8)
       let nextFourRange = Range(index4..<index8)
-      let nextFour = noSpaces.substringWithRange(nextFourRange)
+      let nextFour = noSpaces.substring(with: nextFourRange)
       formattedString += nextFour + " "
       
       guard noSpaces.characters.count > 12 else {
         //Just add the remaining spaces
-        let remaining = noSpaces.substringFromIndex(index8)
+        let remaining = noSpaces.substring(from: index8)
         return formattedString + remaining
       }
       
-      let index12 = noSpaces.startIndex.advancedBy(12)
+      let index12 = noSpaces.index(startIndex, offsetBy: 12)
       let followingFourRange = Range(index8..<index12)
-      let followingFour = noSpaces.substringWithRange(followingFourRange)
-      let remaining = noSpaces.substringFromIndex(index12)
+      let followingFour = noSpaces.substring(with: followingFourRange)
+      let remaining = noSpaces.substring(from: index12)
       return formattedString + followingFour + " " + remaining
     }
   }

@@ -51,11 +51,11 @@ class CartViewController: UIViewController {
     totalCostLabel.text = CurrencyFormatter.dollarsFormatter.stringFromNumber(cost)
     
     //Disable checkout if there's nothing to check out with
-    checkoutButton.enabled = (cost > 0)
+    checkoutButton.isEnabled = (cost > 0)
   }
   
   @IBAction func reset() {
     ShoppingCart.sharedCart.chocolates.value = []
-    navigationController?.popViewControllerAnimated(true)
+    let _ = navigationController?.popViewController(animated: true)
   }
 }

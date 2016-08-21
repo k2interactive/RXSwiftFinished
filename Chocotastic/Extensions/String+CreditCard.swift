@@ -24,8 +24,8 @@ import Foundation
 extension String {
   
   func rw_allCharactersAreNumbers() -> Bool {
-    let nonNumberCharacterSet = NSCharacterSet.decimalDigitCharacterSet().invertedSet
-    return (self.rangeOfCharacterFromSet(nonNumberCharacterSet) == nil)
+    let nonNumberCharacterSet = NSCharacterSet.decimalDigits.inverted
+    return (self.rangeOfCharacter(from: nonNumberCharacterSet) == nil)
   }
   
   
@@ -38,8 +38,8 @@ extension String {
       return NSNotFound
     }
     
-    let indexToStopAt = self.startIndex.advancedBy(characterCount)
-    let substring = self.substringToIndex(indexToStopAt)
+    let indexToStopAt = self.index(self.startIndex, offsetBy: characterCount)
+    let substring = self.substring(to: indexToStopAt)
     guard let integerValue = Int(substring) else {
       return NSNotFound
     }
@@ -56,10 +56,10 @@ extension String {
       return false
     }
     
-    let reversed = self.characters.reverse().map { String($0) }
+    let reversed = self.characters.reversed().map { String($0) }
     
     var sum = 0
-    for (index, element) in reversed.enumerate() {
+    for (index, element) in reversed.enumerated() {
       guard let digit = Int(element) else {
         //This is not a number.
         return false
@@ -86,6 +86,6 @@ extension String {
   }
   
   func rw_removeSpaces() -> String {
-    return self.stringByReplacingOccurrencesOfString(" ", withString: "")
+    return self.replacingOccurrences(of: " ", with: "")
   }
 }

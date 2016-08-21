@@ -25,7 +25,7 @@ import UIKit
 /// Mostly dumb subclass to make status bar style work for views embedded in this navigation controller.
 class ChocolateNavigationController: UINavigationController {
 
-  override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    return .LightContent
+  override var preferredStatusBarStyle: UIStatusBarStyle {
+    return .lightContent
   }
 }

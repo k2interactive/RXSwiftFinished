@@ -60,7 +60,7 @@ class ShoppingCart {
       return "\(chocolate.countryFlagEmoji)🍫: \(count)"
     }
     
-    return itemStrings.joinWithSeparator("\n")
+    return itemStrings.joined(separator: "\n")
   }
   
 }

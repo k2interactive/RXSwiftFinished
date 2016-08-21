@@ -35,14 +35,14 @@ extension SegueHandler //Default implementation...
 SegueIdentifier.RawValue == String { //who have String segue identifiers.
   
   func performSegueWithIdentifier(identifier: SegueIdentifier, sender: AnyObject? = nil) {
-    performSegueWithIdentifier(identifier.rawValue,
+    performSegue(withIdentifier: identifier.rawValue,
                                sender: sender)
   }
   
   func identifierForSegue(segue: UIStoryboardSegue) -> SegueIdentifier {
-    guard let
-      stringIdentifier = segue.identifier,
-      identifier = SegueIdentifier(rawValue: stringIdentifier) else {
+    guard
+      let stringIdentifier = segue.identifier,
+      let identifier = SegueIdentifier(rawValue: stringIdentifier) else {
         fatalError("Couldn't find identifier for segue!")
     }
     

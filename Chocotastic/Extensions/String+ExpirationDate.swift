@@ -30,16 +30,16 @@ extension String {
       return self
     }
     
-    let index2 = self.startIndex.advancedBy(2)
-    let firstTwo = self.substringToIndex(index2)
-    let rest = self.substringFromIndex(index2)
+    let index2 = self.index(self.startIndex, offsetBy: 2)
+    let firstTwo = self.substring(to: index2)
+    let rest = self.substring(from: index2)
     
     return firstTwo + " / " + rest
   }
   
   func rw_removeSlash() -> String {
     let removedSpaces = self.rw_removeSpaces()
-    return removedSpaces.stringByReplacingOccurrencesOfString("/", withString: "")
+    return removedSpaces.replacingOccurrences(of: "/", with: "")
   }
   
   func rw_isValidExpirationDate() -> Bool {
@@ -50,13 +50,13 @@ extension String {
         return false
     }
     
-    let index2 = self.startIndex.advancedBy(2)
-    let monthString = self.substringToIndex(index2)
-    let yearString = self.substringFromIndex(index2)
+    let index2 = self.index(self.startIndex, offsetBy: 2)
+    let monthString = self.substring(to: index2)
+    let yearString = self.substring(from: index2)
     
-    guard let
-      month = Int(monthString),
-      year = Int(yearString) else {
+    guard
+      let month = Int(monthString),
+      let year = Int(yearString) else {
         //We can't even check.
         return false
     }
@@ -66,7 +66,7 @@ extension String {
       return false
     }
     
-    let now = NSDate()
+    let now = Date()
     let currentYear = now.rw_currentYear()
     
     guard year >= currentYear else {

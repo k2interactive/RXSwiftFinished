@@ -25,9 +25,9 @@ import UIKit
 @IBDesignable
 class ChocolateButton: UIButton {
   
-  override var enabled: Bool {
+  override var isEnabled: Bool {
     didSet {
-      if self.enabled {
+      if self.isEnabled {
         self.alpha = 1
       } else {
         self.alpha = 0.5
@@ -35,7 +35,7 @@ class ChocolateButton: UIButton {
     }
   }
   
-  enum Type {
+  enum ButtonType {
     case
     Standard,
     Warning
@@ -53,7 +53,7 @@ class ChocolateButton: UIButton {
   }
   
   
-  private var type: Type = .Standard {
+  private var type: ButtonType = .Standard {
     didSet {
       updateBackgroundColorForCurrentType()
     }
@@ -63,7 +63,7 @@ class ChocolateButton: UIButton {
   //MARK: Initialization
   
   private func commonInit() {
-    self.setTitleColor(.whiteColor(), forState: .Normal)
+    self.setTitleColor(.white, for: .normal)
     updateBackgroundColorForCurrentType()
   }
   
@@ -85,9 +85,9 @@ class ChocolateButton: UIButton {
   func updateBackgroundColorForCurrentType() {
     switch type {
     case .Standard:
-      self.backgroundColor = .brownColor()
+      self.backgroundColor = .brown
     case .Warning:
-      self.backgroundColor = .redColor()
+      self.backgroundColor = .red
     }
   }
 }
