@@ -76,7 +76,6 @@ class BillingInfoViewController: UIViewController {
   private func setupTextChangeHandling() {
     let creditCardValid = creditCardNumberTextField
       .rx
-      .textInput
       .text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
       .map { self.validate(cardText: $0) }
@@ -87,7 +86,6 @@ class BillingInfoViewController: UIViewController {
     
     let expirationValid = expirationDateTextField
       .rx
-      .textInput
       .text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
       .map { self.validate(expirationDateText: $0) }
@@ -98,7 +96,6 @@ class BillingInfoViewController: UIViewController {
     
     let cvvValid = cvvTextField
       .rx
-      .textInput
       .text
       .map { self.validate(cvvText: $0) }
     
