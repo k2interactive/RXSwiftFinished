@@ -27,7 +27,7 @@
                                         <rect key="frame" x="0.0" y="92" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RRE-kj-waP" id="qNi-Cy-hBS">
-                                            <frame key="frameInset" width="414" height="89.5"/>
+                                            <frame key="frameInset" width="414" height="89"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="PUW-sx-png">
@@ -209,7 +209,7 @@
                                             <constraint firstItem="DVE-6j-zOv" firstAttribute="width" secondItem="XeY-sP-tLU" secondAttribute="width" multiplier="0.5" id="D1T-tG-M4s"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tj-Yj-YhX" customClass="ChocolateButton" customModule="Chocotastic" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8tj-Yj-YhX" customClass="ChocolateButton" customModule="Chocotastic" customModuleProvider="target">
                                         <state key="normal" title="Buy Chocolate!">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>

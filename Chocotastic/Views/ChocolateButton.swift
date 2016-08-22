@@ -27,11 +27,7 @@ class ChocolateButton: UIButton {
   
   override var isEnabled: Bool {
     didSet {
-      if self.isEnabled {
-        self.alpha = 1
-      } else {
-        self.alpha = 0.5
-      }
+      updateAlphaForEnabledState()
     }
   }
   
@@ -65,6 +61,7 @@ class ChocolateButton: UIButton {
   private func commonInit() {
     self.setTitleColor(.white, for: .normal)
     updateBackgroundColorForCurrentType()
+    updateAlphaForEnabledState()
   }
   
   required init?(coder aDecoder: NSCoder) {
@@ -88,6 +85,14 @@ class ChocolateButton: UIButton {
       self.backgroundColor = .brown
     case .Warning:
       self.backgroundColor = .red
+    }
+  }
+  
+  func updateAlphaForEnabledState() {
+    if isEnabled {
+      self.alpha = 1
+    } else {
+      self.alpha = 0.5
     }
   }
 }
