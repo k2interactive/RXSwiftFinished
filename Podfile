@@ -3,8 +3,8 @@ platform :ios, '9.0'
 use_frameworks!
 
 target 'Chocotastic' do
-    pod 'RxSwift', '~> 3.0.0.alpha.1'
-    pod 'RxCocoa', '~> 3.0.0.alpha.1'
+    pod 'RxSwift', '~> 3.0.0.beta.1'
+    pod 'RxCocoa', '~> 3.0.0.beta.1'
 end
 
 post_install do |installer|
