@@ -25,14 +25,16 @@ import Foundation
 extension String {
   
   func rw_addSlash() -> String {
-    guard self.characters.count > 2 else {
+    guard self.count > 2 else {
       //Nothing to add
       return self
     }
     
     let index2 = self.index(self.startIndex, offsetBy: 2)
-    let firstTwo = self.substring(to: index2)
-    let rest = self.substring(from: index2)
+//    let firstTwo = self.substring(to: index2)
+    let firstTwo = self[..<index2]
+//    let rest = self.substring(from: index2)
+    let rest = self[index2...]
     
     return firstTwo + " / " + rest
   }
@@ -45,14 +47,14 @@ extension String {
   func rw_isValidExpirationDate() -> Bool {
     let noSlash = self.rw_removeSlash()
     
-    guard noSlash.characters.count == 6 //Must be mmyyyy
+    guard noSlash.count == 6 //Must be mmyyyy
       && noSlash.rw_allCharactersAreNumbers() else { //must be all numbers
         return false
     }
     
     let index2 = self.index(self.startIndex, offsetBy: 2)
-    let monthString = self.substring(to: index2)
-    let yearString = self.substring(from: index2)
+    let monthString = self[..<index2]
+    let yearString = self[index2...]
     
     guard
       let month = Int(monthString),

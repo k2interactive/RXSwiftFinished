@@ -78,6 +78,7 @@ class BillingInfoViewController: UIViewController {
       .rx
       .text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
+      .observeOn(MainScheduler.asyncInstance) //this is here to avoid Reentrancy anomaly
       .map { self.validate(cardText: $0!) }
     
     creditCardValid
@@ -88,6 +89,7 @@ class BillingInfoViewController: UIViewController {
       .rx
       .text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
+      .observeOn(MainScheduler.asyncInstance) //this is here to avoid Reentrancy anomaly
       .map { self.validate(expirationDateText: $0!) }
     
     expirationValid
@@ -97,6 +99,7 @@ class BillingInfoViewController: UIViewController {
     let cvvValid = cvvTextField
       .rx
       .text
+      .observeOn(MainScheduler.asyncInstance) //this is here to avoid Reentrancy anomaly
       .map { self.validate(cvvText: $0!) }
     
     cvvValid
@@ -139,7 +142,7 @@ class BillingInfoViewController: UIViewController {
     let strippedSlashExpiration = expiration.rw_removeSlash()
     
     formatExpirationDate(using: strippedSlashExpiration)
-    advanceIfNecessary(expirationNoSpacesOrSlash:  strippedSlashExpiration)
+    advanceIfNecessary(expirationNoSpacesOrSlash: strippedSlashExpiration)
     
     return strippedSlashExpiration.rw_isValidExpirationDate()
   }

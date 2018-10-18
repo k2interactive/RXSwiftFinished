@@ -34,12 +34,12 @@ extension String {
       return NSNotFound
     }
     
-    if characters > self.characters.count {
+    if characters > self.count {
       return NSNotFound
     }
     
     let indexToStopAt = self.index(self.startIndex, offsetBy: characters)
-    let substring = self.substring(to: indexToStopAt)
+    let substring = self[..<indexToStopAt]
     guard let integerValue = Int(substring) else {
       return NSNotFound
     }
@@ -56,7 +56,7 @@ extension String {
       return false
     }
     
-    let reversed = self.characters.reversed().map { String($0) }
+    let reversed = self.reversed().map { String($0) }
     
     var sum = 0
     for (index, element) in reversed.enumerated() {
