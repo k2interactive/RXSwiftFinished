@@ -49,13 +49,13 @@ class ChocolatesOfTheWorldViewController: UIViewController {
   private func setupCellConfiguration() {
     //Equivalent of cell for row at index path
     europeanChocolates
-      .bindTo(tableView
+      .bind(to: tableView
         .rx
         .items(cellIdentifier: ChocolateCell.Identifier, cellType: ChocolateCell.self)) {
           row, chocolate, cell in
           cell.configureWithChocolate(chocolate: chocolate)
       }
-      .addDisposableTo(disposeBag)
+      .disposed(by: disposeBag)
   }
   
   private func setupCellTapHandling() {
@@ -71,7 +71,7 @@ class ChocolatesOfTheWorldViewController: UIViewController {
           self.tableView.deselectRow(at: selectedRowIndexPath, animated: true)
         }
       })
-      .addDisposableTo(disposeBag)
+      .disposed(by: disposeBag)
   }
   
   private func setupCartObserver() {
@@ -80,7 +80,7 @@ class ChocolatesOfTheWorldViewController: UIViewController {
         chocolates in
         self.cartButton.title = "\(chocolates.count) \u{1f36b}"
       })
-      .addDisposableTo(disposeBag)
+      .disposed(by: disposeBag)
   }
   
 }

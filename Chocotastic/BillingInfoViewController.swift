@@ -70,7 +70,7 @@ class BillingInfoViewController: UIViewController {
         cardType in
         self.creditCardImageView.image = cardType.image
       })
-      .addDisposableTo(disposeBag)
+      .disposed(by: disposeBag)
   }
   
   private func setupTextChangeHandling() {
@@ -78,30 +78,30 @@ class BillingInfoViewController: UIViewController {
       .rx
       .text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
-      .map { self.validate(cardText: $0) }
+      .map { self.validate(cardText: $0!) }
     
     creditCardValid
       .subscribe(onNext: { self.creditCardNumberTextField.valid = $0 })
-      .addDisposableTo(disposeBag)
+      .disposed(by: disposeBag)
     
     let expirationValid = expirationDateTextField
       .rx
       .text
       .throttle(throttleInterval, scheduler: MainScheduler.instance)
-      .map { self.validate(expirationDateText: $0) }
+      .map { self.validate(expirationDateText: $0!) }
     
     expirationValid
       .subscribe(onNext: { self.expirationDateTextField.valid = $0 })
-      .addDisposableTo(disposeBag)
+      .disposed(by: disposeBag)
     
     let cvvValid = cvvTextField
       .rx
       .text
-      .map { self.validate(cvvText: $0) }
+      .map { self.validate(cvvText: $0!) }
     
     cvvValid
       .subscribe(onNext: { self.cvvTextField.valid = $0 })
-      .addDisposableTo(disposeBag)
+      .disposed(by: disposeBag)
     
     let everythingValid = Observable
       .combineLatest(creditCardValid, expirationValid, cvvValid) {
@@ -109,8 +109,8 @@ class BillingInfoViewController: UIViewController {
       }
     
     everythingValid
-      .bindTo(purchaseButton.rx.enabled)
-      .addDisposableTo(disposeBag)
+      .bind(to: purchaseButton.rx.isEnabled)
+      .disposed(by: disposeBag)
   }
   
   //MARK: - Validation methods
@@ -132,7 +132,7 @@ class BillingInfoViewController: UIViewController {
       return false
     }
     
-    return noWhitespace.characters.count == self.cardType.value.expectedDigits
+    return noWhitespace.count == self.cardType.value.expectedDigits
   }
   
   func validate(expirationDateText expiration: String) -> Bool {
@@ -150,7 +150,7 @@ class BillingInfoViewController: UIViewController {
       return false
     }
     dismissIfNecessary(cvv: cvv)
-    return cvv.characters.count == self.cardType.value.cvvDigits
+    return cvv.count == self.cardType.value.cvvDigits
   }
   
   
@@ -165,7 +165,7 @@ class BillingInfoViewController: UIViewController {
   }
   
   func advanceIfNecessary(noSpacesCardNumber: String) {
-    if noSpacesCardNumber.characters.count == self.cardType.value.expectedDigits {
+    if noSpacesCardNumber.count == self.cardType.value.expectedDigits {
       self.expirationDateTextField.becomeFirstResponder()
     }
   }
@@ -175,13 +175,13 @@ class BillingInfoViewController: UIViewController {
   }
   
   func advanceIfNecessary(expirationNoSpacesOrSlash: String) {
-    if expirationNoSpacesOrSlash.characters.count == 6 { //mmyyyy
+    if expirationNoSpacesOrSlash.count == 6 { //mmyyyy
       self.cvvTextField.becomeFirstResponder()
     }
   }
   
   func dismissIfNecessary(cvv: String) {
-    if cvv.characters.count == self.cardType.value.cvvDigits {
+    if cvv.count == self.cardType.value.cvvDigits {
       let _ = self.cvvTextField.resignFirstResponder()
     }
   }

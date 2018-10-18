@@ -148,7 +148,7 @@ enum CardType {
   }
   
   func format(noSpaces: String) -> String {
-    guard noSpaces.characters.count >= 4 else {
+    guard noSpaces.count >= 4 else {
       //No formatting necessary if <= 4
       return noSpaces
     }
@@ -165,7 +165,7 @@ enum CardType {
     switch self {
     case .Amex:
       //Amex format is xxxx xxxxxx xxxxx
-      guard noSpaces.characters.count > 10 else {
+      guard noSpaces.count > 10 else {
         //No further formatting required.
         return formattedString + noSpaces.substring(from: index4)
       }
@@ -178,7 +178,7 @@ enum CardType {
       return formattedString + nextSix + " " + remaining
     default:
       //Other cards are formatted as xxxx xxxx xxxx xxxx
-      guard noSpaces.characters.count > 8 else {
+      guard noSpaces.count > 8 else {
         //No further formatting required.
         return formattedString + noSpaces.substring(from: index4)
       }
@@ -188,7 +188,7 @@ enum CardType {
       let nextFour = noSpaces.substring(with: nextFourRange)
       formattedString += nextFour + " "
       
-      guard noSpaces.characters.count > 12 else {
+      guard noSpaces.count > 12 else {
         //Just add the remaining spaces
         let remaining = noSpaces.substring(from: index8)
         return formattedString + remaining
